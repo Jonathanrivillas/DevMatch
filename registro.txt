@@ -1,0 +1,14 @@
+Nombre: Jonathan Peña
+Tipo de Documento: Cédula
+Número de Documento: 1037668969
+Correo: Jonathannpr7@gmail.com
+Celular: 3209807115
+Tipo de Cliente: CLIENTE
+
+Nombre: Ferney Peña
+Tipo de Documento: Cédula
+Número de Documento: 1040745786
+Correo: ferneypenarivillas@gmail.com
+Celular: 3217822979
+Tipo de Cliente: CLIENTE
+
