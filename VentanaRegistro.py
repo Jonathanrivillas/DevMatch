@@ -161,6 +161,44 @@ class ventana5(QMainWindow):
         self.comboBoxTipoCliente.move(400, 160)  # Ajusta la posición según sea necesario
         self.comboBoxTipoCliente.setFixedWidth(200)  # Establece el ancho según sea necesario
         self.comboBoxTipoCliente.setStyleSheet("background-color: white;")
+        
+        self.letreroFacebook = QLabel(self)
+        self.letreroFacebook.setText("Facebook")
+        self.letreroFacebook.setFont(self.letra2)
+        self.letreroFacebook.setStyleSheet("color: white; background-color: none")
+        self.letreroFacebook.move(400, 300)
+        self.letreroFacebook.setFixedWidth(200)
+
+        self.editFacebook = QLineEdit(self)
+        self.editFacebook.setFixedWidth(200)
+        self.editFacebook.move(400, 330)
+        self.editFacebook.setStyleSheet("background-color: white;")
+
+        # Agregamos la etiqueta y el QLineEdit para WhatsApp
+        self.letreroWpp = QLabel(self)
+        self.letreroWpp.setText("WhatsApp")
+        self.letreroWpp.setFont(self.letra2)
+        self.letreroWpp.setStyleSheet("color: white; background-color: none")
+        self.letreroWpp.move(400, 370)
+        self.letreroWpp.setFixedWidth(200)
+
+        self.editWpp = QLineEdit(self)
+        self.editWpp.setFixedWidth(200)
+        self.editWpp.move(400, 400)
+        self.editWpp.setStyleSheet("background-color: white;")
+
+        # Agregamos la etiqueta y el QLineEdit para Instagram
+        self.letreroInstagram = QLabel(self)
+        self.letreroInstagram.setText("Instagram")
+        self.letreroInstagram.setFont(self.letra2)
+        self.letreroInstagram.setStyleSheet("color: white; background-color: none")
+        self.letreroInstagram.move(400, 430)
+        self.letreroInstagram.setFixedWidth(200)
+
+        self.editInstagram = QLineEdit(self)
+        self.editInstagram.setFixedWidth(200)
+        self.editInstagram.move(400, 460)
+        self.editInstagram.setStyleSheet("background-color: white;")
 
 
         self.botonEnviar = QPushButton(self)
@@ -186,7 +224,7 @@ class ventana5(QMainWindow):
 
         self.botonEnviar.clicked.connect(self.accion_botonEnviar)
 
-    def guardar_en_archivo(self, nombre, tipo_documento, numero_documento, correo, password, celular, tipo_cliente):
+    def guardar_en_archivo(self, nombre, tipo_documento, numero_documento, correo, password, celular, tipo_cliente, instagram, wpp, facebook):
         # Define el nombre del archivo
         archivo = "registro.txt"
 
@@ -200,6 +238,9 @@ class ventana5(QMainWindow):
             f.write(f"Contraseña: {password}\n")
             f.write(f"Celular: {celular}\n")
             f.write(f"Tipo de Cliente: {tipo_cliente}\n")
+            f.write(f"Instagram: {instagram}\n")
+            f.write(f"Whatsapp: {wpp}\n")
+            f.write(f"Facebook: {facebook}\n")
             f.write("---------------------------------------------------\n")
     def accion_botonVolver(self):
         # Ocultamos la ventana actual
@@ -217,9 +258,13 @@ class ventana5(QMainWindow):
             password = self.editPassword.text()
             celular = self.editCelular.text()
             tipo_cliente = self.comboBoxTipoCliente.currentText()
+            instagram = self.editInstagram.text()
+            wpp = self.editWpp.text()
+            facebook = self.editFacebook.text()
 
             # Guardar la información en un archivo plano
-            self.guardar_en_archivo(nombre, tipo_documento, numero_documento, correo, password, celular, tipo_cliente)
+            self.guardar_en_archivo(nombre, tipo_documento, numero_documento, correo, password, celular, tipo_cliente, instagram, wpp, facebook)
+        # Define el nombre del archivo )
 
             # Mostrar mensaje de registro exitoso
             mensaje = f'SE HA ENVIADO CORRECTAMENTE SU REGISTRO.'

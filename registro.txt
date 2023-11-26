@@ -1,4 +1,34 @@
 
+Nombre: juan pablo botero
+Tipo de Documento: Cédula
+Número de Documento: 1001360381
+Correo: boterojuan00@gmail.com
+Contraseña: 3312
+Celular: 3227445547
+Tipo de Cliente: Carpy
+Facebook: Juan Lsd
+Whatsapp: 3227445547
+Instagram: Yoy_soy_juan
+---------------------------------------------------
+Nombre: a
+Tipo de Documento: Cédula
+Número de Documento: a
+Correo: a
+Contraseña: a
+Celular: a
+Tipo de Cliente: Carpy
+Facebook: a
+WhatsApp: a
+Instagram: a
+---------------------------------------------------
+Nombre: a
+Tipo de Documento: Cédula
+Número de Documento: a
+Correo: a
+Contraseña: a
+Celular: a
+Tipo de Cliente: Carpy
+---------------------------------------------------
 Nombre: a
 Tipo de Documento: Cédula
 Número de Documento: a
@@ -14,4 +44,26 @@ Correo: u
 Contraseña: u
 Celular: u
 Tipo de Cliente: Carpy
+---------------------------------------------------
+Nombre: Santiago Arango Galeano
+Tipo de Documento: Cédula
+Número de Documento: 1020105514
+Correo: a
+Contraseña: a
+Celular: 3014424125
+Tipo de Cliente: Carpy
+Instagram: jonathan_cacorro_pirobo
+Whatsapp: 3014424125
+Facebook: Santiago Arango Galeano
+---------------------------------------------------
+Nombre: Santiago Arango Galeano
+Tipo de Documento: Cédula
+Número de Documento: 1020105514
+Correo: f
+Contraseña: f
+Celular: 3014424125
+Tipo de Cliente: Carpy
+Instagram: Jonathan_pirobo_cacorro
+Whatsapp: 3014424125
+Facebook: Jonathan el marica
 ---------------------------------------------------

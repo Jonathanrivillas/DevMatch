@@ -129,7 +129,7 @@ class ventana4(QMainWindow):
         self.letreroCelular.setFixedWidth(500)
 
         self.letreroInstagram = QLabel(self)
-        self.letreroInstagram.setText({usuario['Instagram']})
+        self.letreroInstagram.setText(usuario['Instagram'])
         self.letreroInstagram.setFont(self.letra3)
         self.letreroInstagram.setStyleSheet("color: white; background-color: none")
         self.letreroInstagram.move(60, 330)
@@ -163,14 +163,14 @@ class ventana4(QMainWindow):
         self.logoFondo.move(25, 410)
 
         self.letreroFacebook = QLabel(self)
-        self.letreroFacebook.setText({usuario['Facebook']})
+        self.letreroFacebook.setText(usuario['Facebook'])
         self.letreroFacebook.setFont(self.letra3)
         self.letreroFacebook.setStyleSheet("color: white; background-color: none")
         self.letreroFacebook.move(60, 370)
         self.letreroFacebook.setFixedWidth(500)
 
         self.letreroWpp = QLabel(self)
-        self.letreroWpp.setText({usuario['Whatsapp']})
+        self.letreroWpp.setText(str(usuario['Whatsapp']))
         self.letreroWpp.setFont(self.letra3)
         self.letreroWpp.setStyleSheet("color: white; background-color: none")
         self.letreroWpp.move(65, 415)
