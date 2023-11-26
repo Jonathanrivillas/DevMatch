@@ -78,7 +78,7 @@ class ventana5(QMainWindow):
         self.editNombre.setFixedWidth(200)
         self.editNombre.move(70,160)
         self.editNombre.setFont(self.letra3)
-        self.editNombre.setStyleSheet("background-color: white")
+        self.editNombre.setStyleSheet("background-color: white;")
 
         self.letreroTipodeDocumento = QLabel(self)
         self.letreroTipodeDocumento.setText("Tipo de documento")
@@ -107,31 +107,45 @@ class ventana5(QMainWindow):
         self.editNumeroDeDocumento.setFixedWidth(200)
         self.editNumeroDeDocumento.move(70,330)
         self.editNumeroDeDocumento.setFont(self.letra3)
-        self.editNumeroDeDocumento.setStyleSheet("background-color: white")
+        self.editNumeroDeDocumento.setStyleSheet("background-color: white;")
 
         self.letreroCorreo = QLabel(self)
         self.letreroCorreo.setText("Correo")
         self.letreroCorreo.setFont(self.letra2)
-        self.letreroCorreo.setStyleSheet("color: white; background-color: none")
+        self.letreroCorreo.setStyleSheet("color: #white; background-color: none")
         self.letreroCorreo.move(70, 370)
         self.letreroCorreo.setFixedWidth(200)
 
         self.editCorreo = QLineEdit(self)
         self.editCorreo.setFixedWidth(200)
-        self.editCorreo.move(70,400)
-        self.editCorreo.setStyleSheet("background-color: white")
+        self.editCorreo.move(70, 400)
+        self.editCorreo.setStyleSheet("background-color: white;")
+
+        # Agregamos la etiqueta y el QLineEdit para la contraseña
+        self.letreroPassword = QLabel(self)
+        self.letreroPassword.setText("Contraseña")
+        self.letreroPassword.setFont(self.letra2)
+        self.letreroPassword.setStyleSheet("color: white; background-color: none")
+        self.letreroPassword.move(70, 440)
+        self.letreroPassword.setFixedWidth(200)
+
+        self.editPassword = QLineEdit(self)
+        self.editPassword.setFixedWidth(200)
+        self.editPassword.move(70, 470)
+        self.editPassword.setStyleSheet("background-color: white;")
+        self.editPassword.setEchoMode(QLineEdit.Password)
 
         self.letreroCelular = QLabel(self)
         self.letreroCelular.setText("Celular")
         self.letreroCelular.setFont(self.letra2)
         self.letreroCelular.setStyleSheet("color: white; background-color: none")
-        self.letreroCelular.move(70, 440)
+        self.letreroCelular.move(400, 220)
         self.letreroCelular.setFixedWidth(200)
 
         self.editCelular= QLineEdit(self)
         self.editCelular.setFixedWidth(200)
-        self.editCelular.move(70, 470)
-        self.editCelular.setStyleSheet("background-color: white")
+        self.editCelular.move(400, 250)
+        self.editCelular.setStyleSheet("background-color: white;")
 
         self.letreroTipodeCliente = QLabel(self)
         self.letreroTipodeCliente.setText("Tipo de usuario")
@@ -172,20 +186,21 @@ class ventana5(QMainWindow):
 
         self.botonEnviar.clicked.connect(self.accion_botonEnviar)
 
-    def guardar_en_archivo(self, nombre, tipo_documento, numero_documento, correo, celular, tipo_cliente):
-            # Define el nombre del archivo
-            archivo = "registro.txt"
+    def guardar_en_archivo(self, nombre, tipo_documento, numero_documento, correo, password, celular, tipo_cliente):
+        # Define el nombre del archivo
+        archivo = "registro.txt"
 
-            # Abre el archivo en modo de escritura
-            with open(archivo, "a") as f:
-                # Escribe la información en el archivo
-                f.write(f"Nombre: {nombre}\n")
-                f.write(f"Tipo de Documento: {tipo_documento}\n")
-                f.write(f"Número de Documento: {numero_documento}\n")
-                f.write(f"Correo: {correo}\n")
-                f.write(f"Celular: {celular}\n")
-                f.write(f"Tipo de Cliente: {tipo_cliente}\n")
-                f.write("\n")
+        # Abre el archivo en modo de escritura
+        with open(archivo, "a", encoding="utf-8") as f:
+            # Escribe la información en el archivo, usando '-' como separador
+            f.write(f"Nombre: {nombre}\n")
+            f.write(f"Tipo de Documento: {tipo_documento}\n")
+            f.write(f"Número de Documento: {numero_documento}\n")
+            f.write(f"Correo: {correo}\n")
+            f.write(f"Contraseña: {password}\n")
+            f.write(f"Celular: {celular}\n")
+            f.write(f"Tipo de Cliente: {tipo_cliente}\n")
+            f.write("---------------------------------------------------\n")
     def accion_botonVolver(self):
         # Ocultamos la ventana actual
         self.hide()
@@ -199,11 +214,12 @@ class ventana5(QMainWindow):
             tipo_documento = self.comboBox.currentText()
             numero_documento = self.editNumeroDeDocumento.text()
             correo = self.editCorreo.text()
+            password = self.editPassword.text()
             celular = self.editCelular.text()
             tipo_cliente = self.comboBoxTipoCliente.currentText()
 
             # Guardar la información en un archivo plano
-            self.guardar_en_archivo(nombre, tipo_documento, numero_documento, correo, celular, tipo_cliente)
+            self.guardar_en_archivo(nombre, tipo_documento, numero_documento, correo, password, celular, tipo_cliente)
 
             # Mostrar mensaje de registro exitoso
             mensaje = f'SE HA ENVIADO CORRECTAMENTE SU REGISTRO.'
@@ -218,10 +234,51 @@ class ventana5(QMainWindow):
 
         except Exception as e:
             print(f"Error: {str(e)}")
+        
+        
+    def obtener_registros(self):
+        archivo = "registro.txt"
+        print(f"Leyendo registros desde {archivo}")
+
+        registros = []
+
+        try:
+            with open(archivo, "r", encoding="utf-8") as f:
+                lineas = f.readlines()
+                print(f"Lineas leídas: {len(lineas)}")
+
+                # Inicializamos el diccionario de registro
+                registro = {}
+                for linea in lineas:
+                    # Si encontramos un separador, agregamos el registro actual a la lista de registros
+                    if linea.startswith("---------------------------------------------------"):
+                        if registro:
+                            registros.append(registro)
+                            print(f"Registro agregado: {registro}")
+                            # Reiniciamos el diccionario para el próximo registro
+                            registro = {}
+                    else:
+                        # Dividimos la línea en clave y valor y agregamos al diccionario
+                        partes = linea.split(":", 1)
+                        if len(partes) == 2:
+                            clave, valor = map(str.strip, partes)
+                            registro[clave] = valor
+                            print(f"{clave}: {valor}")
+                        else:
+                            print(f"Advertencia: Línea ignorada - {linea.strip()}")
+
+                # Si hay un registro pendiente, agrégalo
+                if registro:
+                    registros.append(registro)
+                    print(f"Registro agregado: {registro}")
+
+        except Exception as e:
+            print("Error leyendo archivo:", e)
+
+        print(f"Registros: {registros}")
+        return registros
 
     def mostrar_ventanaAnterior(self):
-    # Ocultar la ventana actual
-        self.hide()
-
-    # Crear una instancia de la ventana6 y mostrarla
+        # Cierra la ventana actual y muestra la ventana anterior
+        self.close()
         self.ventanaAnterior.show()

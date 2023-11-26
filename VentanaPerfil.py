@@ -5,10 +5,11 @@ from PyQt5.QtCore import QSize
 from PyQt5.QtGui import QIcon
 from ventanaEditarPerfil import ventana9
 class ventana4(QMainWindow):
-    def __init__(self, anterior):
+    def __init__(self, anterior, usuario):
         super(ventana4, self).__init__()
 
         self.ventanaAnterior = anterior
+        self.usuario = usuario  # Información sobre el usuario que ha iniciado sesión
         # Poner el titulo
         self.setWindowTitle("Perfil carpy")
         self.setWindowIcon(QIcon('Logo/carpy.png'))  # Reemplaza 'icono.png' con la ruta de tu propio archivo de icono
@@ -97,37 +98,38 @@ class ventana4(QMainWindow):
         # Ajusta la posición y el tamaño según sea necesario
         self.labelImagen.setGeometry(250, 180, 200, 200)
     # Definimos la accion de publicar (Subir archivo)
+        print(f'Diccionario de usuario: {usuario}')  # Imprime el diccionario para depurar
 
         self.letreroNombre = QLabel(self)
-        self.letreroNombre.setText("Edward Muñoz Arrieta")
+        self.letreroNombre.setText(usuario['Nombre'])  # O proporciona un valor predeterminado
         self.letreroNombre.setFont(self.letra1)
         self.letreroNombre.setStyleSheet("color: white;")
         self.letreroNombre.move(190, 100)
         self.letreroNombre.setFixedWidth(600)
 
         self.letreroCedula = QLabel(self)
-        self.letreroCedula.setText("CC: 1003002719")
+        self.letreroCedula.setText(f"CC: {usuario['Número de Documento']}")
         self.letreroCedula.setFont(self.letra3)
         self.letreroCedula.setStyleSheet("color: white;")
         self.letreroCedula.move(190, 150)
         self.letreroCedula.setFixedWidth(600)
 
         self.letreroCorreo = QLabel(self)
-        self.letreroCorreo.setText("Correo: edwardmunozarrieta@gmail.com")
+        self.letreroCorreo.setText(f"Correo: {usuario['Correo']}")
         self.letreroCorreo.setFont(self.letra3)
         self.letreroCorreo.setStyleSheet("color: white;")
         self.letreroCorreo.move(190, 190)
         self.letreroCorreo.setFixedWidth(600)
 
         self.letreroCelular = QLabel(self)
-        self.letreroCelular.setText("Celular: 3128836269")
+        self.letreroCelular.setText(f"Celular: {usuario['Celular']}")
         self.letreroCelular.setFont(self.letra3)
         self.letreroCelular.setStyleSheet("color: white; background-color: none")
         self.letreroCelular.move(190, 230)
         self.letreroCelular.setFixedWidth(500)
 
         self.letreroInstagram = QLabel(self)
-        self.letreroInstagram.setText("Edwarcapinteria1998")
+        self.letreroInstagram.setText({usuario['Instagram']})
         self.letreroInstagram.setFont(self.letra3)
         self.letreroInstagram.setStyleSheet("color: white; background-color: none")
         self.letreroInstagram.move(60, 330)
@@ -160,15 +162,15 @@ class ventana4(QMainWindow):
         self.logoFondo.setStyleSheet("background-color: none")
         self.logoFondo.move(25, 410)
 
-        self.letreroInstagram = QLabel(self)
-        self.letreroInstagram.setText("Edwad Muñoz Arrieta")
-        self.letreroInstagram.setFont(self.letra3)
-        self.letreroInstagram.setStyleSheet("color: white; background-color: none")
-        self.letreroInstagram.move(60, 370)
-        self.letreroInstagram.setFixedWidth(500)
+        self.letreroFacebook = QLabel(self)
+        self.letreroFacebook.setText({usuario['Facebook']})
+        self.letreroFacebook.setFont(self.letra3)
+        self.letreroFacebook.setStyleSheet("color: white; background-color: none")
+        self.letreroFacebook.move(60, 370)
+        self.letreroFacebook.setFixedWidth(500)
 
         self.letreroWpp = QLabel(self)
-        self.letreroWpp.setText("3128836269")
+        self.letreroWpp.setText({usuario['Whatsapp']})
         self.letreroWpp.setFont(self.letra3)
         self.letreroWpp.setStyleSheet("color: white; background-color: none")
         self.letreroWpp.move(65, 415)
@@ -211,7 +213,6 @@ class ventana4(QMainWindow):
             
     def accion_botonComentarios(self):
                 # Ocultamos la ventana actual
-                self.hide()
-                # Creamos una ventana nueva
-                self.ventanaComentarios = ventana11(self)
-                self.ventanaComentarios.show()
+        self.hide()      # Creamos una ventana nueva
+        self.ventanaComentarios = ventana11(self)
+        self.ventanaComentarios.show()

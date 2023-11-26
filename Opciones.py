@@ -128,11 +128,19 @@ class opciones(QMainWindow):
 
 
     def accion_botonIngresarCarpy(self):
-         # Ocultamos la ventana actual
+        # Ocultamos la ventana actual
         self.hide()
-        # Creamos una ventana nueva
-        self.Ventana3 = ventana3(self)
-        # Mostramos la ventana nueva
+
+        # Creamos una instancia de la ventana3 (inicio de sesión)
+        self.Ventana3 = ventana3(anterior=self, ventana_registro=None)
+
+        # Creamos una instancia de la ventana5 (registro)
+        ventana_registro = ventana5(anterior=self)
+
+        # Asignamos la referencia de la ventana de registro a la ventana de inicio de sesión
+        self.Ventana3.ventanaRegistro = ventana_registro
+
+        # Mostramos la ventana de inicio de sesión
         self.Ventana3.show()
 
     def accion_botonIngresarCliente(self):
