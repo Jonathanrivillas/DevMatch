@@ -1,14 +1,117 @@
-Nombre: Jonathan Pe�a
-Tipo de Documento: C�dula
-N�mero de Documento: 1037668969
-Correo: Jonathannpr7@gmail.com
-Celular: 3209807115
-Tipo de Cliente: CLIENTE
 
-Nombre: Ferney Pe�a
-Tipo de Documento: C�dula
-N�mero de Documento: 1040745786
-Correo: ferneypenarivillas@gmail.com
-Celular: 3217822979
-Tipo de Cliente: CLIENTE
-
+Nombre: juan pablo botero
+Tipo de Documento: Cédula
+Número de Documento: 1001360381
+Correo: boterojuan00@gmail.com
+Contraseña: 3312
+Celular: 3227445547
+Tipo de Cliente: Carpy
+Facebook: Juan Lsd
+Whatsapp: 3227445547
+Instagram: Yoy_soy_juan
+---------------------------------------------------
+Nombre: a
+Tipo de Documento: Cédula
+Número de Documento: a
+Correo: a
+Contraseña: a
+Celular: a
+Tipo de Cliente: Carpy
+Facebook: a
+WhatsApp: a
+Instagram: a
+---------------------------------------------------
+Nombre: a
+Tipo de Documento: Cédula
+Número de Documento: a
+Correo: a
+Contraseña: a
+Celular: a
+Tipo de Cliente: Carpy
+---------------------------------------------------
+Nombre: a
+Tipo de Documento: Cédula
+Número de Documento: a
+Correo: a
+Contraseña: a
+Celular: a
+Tipo de Cliente: Carpy
+---------------------------------------------------
+Nombre: u
+Tipo de Documento: Cédula
+Número de Documento: u
+Correo: u
+Contraseña: u
+Celular: u
+Tipo de Cliente: Carpy
+---------------------------------------------------
+Nombre: Santiago Arango Galeano
+Tipo de Documento: Cédula
+Número de Documento: 1020105514
+Correo: a
+Contraseña: a
+Celular: 3014424125
+Tipo de Cliente: Carpy
+Instagram: jonathan_cacorro_pirobo
+Whatsapp: 3014424125
+Facebook: Santiago Arango Galeano
+---------------------------------------------------
+Nombre: Santiago Arango Galeano
+Tipo de Documento: Cédula
+Número de Documento: 1020105514
+Correo: f
+Contraseña: f
+Celular: 3014424125
+Tipo de Cliente: Carpy
+Instagram: Jonathan_pirobo_cacorro
+Whatsapp: 3014424125
+Facebook: Jonathan el marica
+---------------------------------------------------
+Nombre: Santiago Arango Galeano
+Tipo de Documento: Cédula
+Número de Documento: 1020105514
+Correo: santi
+Contraseña: 1
+Celular: 3014424125
+Tipo de Cliente: Carpy
+Instagram: Santi_Arango
+Whatsapp: 3014424125
+Facebook: Santiago Arango Galeano
+Ruta de la Imagen: Logo/FOTO KARINA2.jpg
+---------------------------------------------------
+Nombre: Mimbis
+Tipo de Documento: Cédula
+Número de Documento: 213
+Correo: mimbis
+Contraseña: 1
+Celular: 301
+Tipo de Cliente: Carpy
+Instagram: mimbis
+Whatsapp: 301
+Facebook: mimbis
+Ruta de la Imagen: C://Users//Santi//Downloads//Mimbis.jpg
+---------------------------------------------------
+Nombre: Jona
+Tipo de Documento: Cédula
+Número de Documento: 100037545
+Correo: jona
+Contraseña: 1
+Celular: 301456487875
+Tipo de Cliente: Carpy
+Instagram: A_serius_men
+Whatsapp: 301456487875
+Facebook: A serius men
+Ruta de la Imagen: C:/Users/Santi/Downloads/Un hombre serio.jpg
+---------------------------------------------------
+Nombre: Jero velasquez
+Tipo de Documento: Cédula
+Número de Documento: 12056421564
+Correo: jero@gmail.com
+Contraseña: 1
+Celular: 301
+Tipo de Cliente: Carpy
+Instagram: jero_destroza_qkas
+Whatsapp: 301
+Facebook: jero papasito
+Ruta de la Imagen: C:/Users/Santi/Downloads/Infofrafia PIN.jpg
+---------------------------------------------------

@@ -1,16 +1,20 @@
 import sys
-
+import json
 from PyQt5.QtGui import QFont, QPixmap, QIcon
-from PyQt5.QtWidgets import QMainWindow, QDesktopWidget, QLabel, QLineEdit, QApplication, QPushButton, QWidget
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QMainWindow, QDesktopWidget, QLabel, QLineEdit, QApplication, QPushButton, QWidget, QMessageBox
 from VentanaPerfil import ventana4
 from VentanaRegistro import ventana5
 
 class ventana3(QMainWindow):
-    def __init__(self, anterior, ):
+    def __init__(self, anterior, ventana_registro):
         super().__init__()
 
+        # Creamos un atributo que haga referencia a la ventana de registro
+        self.ventanaRegistro = ventana_registro
         # Creamos un atributo que cree la ventana anterior
         self.ventanaAnterior = anterior
+        
         # Poner el titulo
         self.setWindowTitle("INICIO DE SESIÓN")
         self.setWindowIcon(QIcon('Logo/carpy.png'))  # Reemplaza 'icono.png' con la ruta de tu propio archivo de icono
@@ -83,7 +87,7 @@ class ventana3(QMainWindow):
         self.editPassword = QLineEdit(self)
         self.editPassword.setFixedWidth(250)
         self.editPassword.move(230,380)
-        self.editPassword.setStyleSheet("background-color: white")
+        self.editPassword.setStyleSheet("background-color: white;")
         self.editPassword.setEchoMode(QLineEdit.Password)
 
         self.botonIniciarSesion = QPushButton(self)
@@ -91,8 +95,8 @@ class ventana3(QMainWindow):
         self.botonIniciarSesion.setFont(self.letra2)
         self.botonIniciarSesion.setFixedWidth(120)
         self.botonIniciarSesion.move(300,450)
-        self.botonIniciarSesion.setStyleSheet("color : #FFFFFF"
-                                  "background-color : black;"
+        self.botonIniciarSesion.setStyleSheet("color : black;"
+                                  "background-color : white;"
                                   "border-radius :20px;")
 
         self.logoFondo = QLabel(self)
@@ -111,26 +115,59 @@ class ventana3(QMainWindow):
         self.botonVolver.setFixedWidth(40)
         self.botonVolver.setFixedHeight(40)
         self.botonVolver.move(10, 10)
-        self.botonVolver.setStyleSheet("color : #FFFFFF"
-                                       "background-color : black;"
+        self.botonVolver.setStyleSheet("color : black;"
+                                       "background-color : white;"
                                        "border-radius :20px;")
 
 
         self.botonIniciarSesion.clicked.connect(self.accion_botonIniciarSesion)
         self.botonVolver.clicked.connect(self.accion_botonVolver)
 
-    def accion_botonIniciarSesion(self):
-        # Ocultamos la ventana actual
-        self.hide()
-        # Creamos una ventana nueva
-        self.VentanaPerfil = ventana4(self)
-        # Validamos si el numero ingresado son espacios en blanco
+        self.botonIniciarSesion.setCursor(Qt.PointingHandCursor)
+        self.botonVolver.setCursor(Qt.PointingHandCursor)
+ 
 
-        # Mostramos la ventana nueva
-        self.VentanaPerfil.show()
+
+
+    def accion_botonIniciarSesion(self):
+        # Obtener la información ingresada por el usuario
+        email = self.editEmail.text().strip()
+        password = self.editPassword.text().strip()
+
+        # Verificar si los campos no están vacíos
+        if not email or not password:
+            mensaje = 'Por favor, ingresa correo y contraseña.'
+            ventana_emergente = QMessageBox(self)
+            ventana_emergente.setWindowTitle('Error de Inicio de Sesión')
+            ventana_emergente.setText(mensaje)
+            ventana_emergente.setIcon(QMessageBox.Warning)
+            ventana_emergente.exec_()
+            return
+
+        # Obtener la información de registro desde la ventana de registro
+        registros = self.ventanaRegistro.obtener_registros()
+
+        # Verificar si el usuario está registrado
+        for registro in registros:
+            if registro.get("Correo") == email and registro.get("Contraseña") == password:
+                # Usuario válido, iniciar sesión
+                self.hide()
+                self.VentanaPerfil = ventana4(self, registro)
+                self.VentanaPerfil.show()
+                return
+
+        # Usuario no registrado, mostrar mensaje de error
+        mensaje = 'Correo o contraseña incorrectos. Verifica tus datos e intenta nuevamente.'
+        ventana_emergente = QMessageBox(self)
+        ventana_emergente.setWindowTitle('Error de Inicio de Sesión')
+        ventana_emergente.setText(mensaje)
+        ventana_emergente.setIcon(QMessageBox.Warning)
+        ventana_emergente.exec_()
+
     def accion_botonVolver(self):
         # Ocultamos la ventana actual
         self.hide()
         # Creamos una ventana nueva
         self.ventanaAnterior.show()
-
+        
+        

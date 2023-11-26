@@ -2,7 +2,7 @@ import sys
 
 from PyQt5.QtGui import QFont, QPixmap, QIcon
 from PyQt5.QtWidgets import QMainWindow, QDesktopWidget, QLabel, QLineEdit, QApplication, QPushButton, QWidget, QComboBox, QVBoxLayout, QFileDialog, QMessageBox
-
+from PyQt5.QtCore import Qt
 
 class ventana5(QMainWindow):
     def __init__(self, anterior):
@@ -78,7 +78,7 @@ class ventana5(QMainWindow):
         self.editNombre.setFixedWidth(200)
         self.editNombre.move(70,160)
         self.editNombre.setFont(self.letra3)
-        self.editNombre.setStyleSheet("background-color: white")
+        self.editNombre.setStyleSheet("background-color: white;")
 
         self.letreroTipodeDocumento = QLabel(self)
         self.letreroTipodeDocumento.setText("Tipo de documento")
@@ -107,7 +107,7 @@ class ventana5(QMainWindow):
         self.editNumeroDeDocumento.setFixedWidth(200)
         self.editNumeroDeDocumento.move(70,330)
         self.editNumeroDeDocumento.setFont(self.letra3)
-        self.editNumeroDeDocumento.setStyleSheet("background-color: white")
+        self.editNumeroDeDocumento.setStyleSheet("background-color: white;")
 
         self.letreroCorreo = QLabel(self)
         self.letreroCorreo.setText("Correo")
@@ -118,20 +118,34 @@ class ventana5(QMainWindow):
 
         self.editCorreo = QLineEdit(self)
         self.editCorreo.setFixedWidth(200)
-        self.editCorreo.move(70,400)
-        self.editCorreo.setStyleSheet("background-color: white")
+        self.editCorreo.move(70, 400)
+        self.editCorreo.setStyleSheet("background-color: white;")
+
+        # Agregamos la etiqueta y el QLineEdit para la contraseña
+        self.letreroPassword = QLabel(self)
+        self.letreroPassword.setText("Contraseña")
+        self.letreroPassword.setFont(self.letra2)
+        self.letreroPassword.setStyleSheet("color: white; background-color: none")
+        self.letreroPassword.move(70, 440)
+        self.letreroPassword.setFixedWidth(200)
+
+        self.editPassword = QLineEdit(self)
+        self.editPassword.setFixedWidth(200)
+        self.editPassword.move(70, 470)
+        self.editPassword.setStyleSheet("background-color: white;")
+        self.editPassword.setEchoMode(QLineEdit.Password)
 
         self.letreroCelular = QLabel(self)
         self.letreroCelular.setText("Celular")
         self.letreroCelular.setFont(self.letra2)
         self.letreroCelular.setStyleSheet("color: white; background-color: none")
-        self.letreroCelular.move(70, 440)
+        self.letreroCelular.move(400, 220)
         self.letreroCelular.setFixedWidth(200)
 
         self.editCelular= QLineEdit(self)
         self.editCelular.setFixedWidth(200)
-        self.editCelular.move(70, 470)
-        self.editCelular.setStyleSheet("background-color: white")
+        self.editCelular.move(400, 250)
+        self.editCelular.setStyleSheet("background-color: white;")
 
         self.letreroTipodeCliente = QLabel(self)
         self.letreroTipodeCliente.setText("Tipo de usuario")
@@ -147,6 +161,44 @@ class ventana5(QMainWindow):
         self.comboBoxTipoCliente.move(400, 160)  # Ajusta la posición según sea necesario
         self.comboBoxTipoCliente.setFixedWidth(200)  # Establece el ancho según sea necesario
         self.comboBoxTipoCliente.setStyleSheet("background-color: white;")
+        
+        self.letreroFacebook = QLabel(self)
+        self.letreroFacebook.setText("Facebook")
+        self.letreroFacebook.setFont(self.letra2)
+        self.letreroFacebook.setStyleSheet("color: white; background-color: none")
+        self.letreroFacebook.move(400, 300)
+        self.letreroFacebook.setFixedWidth(200)
+
+        self.editFacebook = QLineEdit(self)
+        self.editFacebook.setFixedWidth(200)
+        self.editFacebook.move(400, 330)
+        self.editFacebook.setStyleSheet("background-color: white;")
+
+        # Agregamos la etiqueta y el QLineEdit para WhatsApp
+        self.letreroWpp = QLabel(self)
+        self.letreroWpp.setText("WhatsApp")
+        self.letreroWpp.setFont(self.letra2)
+        self.letreroWpp.setStyleSheet("color: white; background-color: none")
+        self.letreroWpp.move(400, 370)
+        self.letreroWpp.setFixedWidth(200)
+
+        self.editWpp = QLineEdit(self)
+        self.editWpp.setFixedWidth(200)
+        self.editWpp.move(400, 400)
+        self.editWpp.setStyleSheet("background-color: white;")
+
+        # Agregamos la etiqueta y el QLineEdit para Instagram
+        self.letreroInstagram = QLabel(self)
+        self.letreroInstagram.setText("Instagram")
+        self.letreroInstagram.setFont(self.letra2)
+        self.letreroInstagram.setStyleSheet("color: white; background-color: none")
+        self.letreroInstagram.move(400, 430)
+        self.letreroInstagram.setFixedWidth(200)
+
+        self.editInstagram = QLineEdit(self)
+        self.editInstagram.setFixedWidth(200)
+        self.editInstagram.move(400, 460)
+        self.editInstagram.setStyleSheet("background-color: white;")
 
 
         self.botonEnviar = QPushButton(self)
@@ -154,8 +206,8 @@ class ventana5(QMainWindow):
         self.botonEnviar.setFont(self.letra2)
         self.botonEnviar.setFixedWidth(100)
         self.botonEnviar.move(510,510)
-        self.botonEnviar.setStyleSheet("color : #FFFFFF"
-                                  "background-color : black;"
+        self.botonEnviar.setStyleSheet("color : black;"
+                                  "background-color : white;"
                                   "border-radius :20px;")
 
         self.botonVolver = QPushButton(self)
@@ -164,28 +216,49 @@ class ventana5(QMainWindow):
         self.botonVolver.setFixedWidth(40)
         self.botonVolver.setFixedHeight(40)
         self.botonVolver.move(10, 10)
-        self.botonVolver.setStyleSheet("color : #FFFFFF"
-                                       "background-color : black;"
+        self.botonVolver.setStyleSheet("color : black;"
+                                       "background-color : white;"
                                        "border-radius :20px;")
+        self.botonSeleccionarImagen = QPushButton(self)
+        self.botonSeleccionarImagen.setText("Seleccionar foto de perfil")
+        self.botonSeleccionarImagen.setFont(self.letra2)
+        self.botonSeleccionarImagen.setFixedWidth(200)
+        self.botonSeleccionarImagen.move(70, 510)
+        self.botonSeleccionarImagen.setStyleSheet("color : black;"
+                                            "background-color : white;"
+                                            "border-radius :20px;")
+
+        self.botonSeleccionarImagen.clicked.connect(self.abrirDialogoImagen)
 
         self.botonVolver.clicked.connect(self.accion_botonVolver)
 
         self.botonEnviar.clicked.connect(self.accion_botonEnviar)
+        
+        self.botonEnviar.setCursor(Qt.PointingHandCursor)
+        
+        self.botonSeleccionarImagen.setCursor(Qt.PointingHandCursor)
+        
+        self.botonVolver.setCursor(Qt.PointingHandCursor)
 
-    def guardar_en_archivo(self, nombre, tipo_documento, numero_documento, correo, celular, tipo_cliente):
-            # Define el nombre del archivo
-            archivo = "registro.txt"
+    def guardar_en_archivo(self, nombre, tipo_documento, numero_documento, correo, password, celular, tipo_cliente, instagram, wpp, facebook, ruta_imagen):
+        # Define el nombre del archivo
+        archivo = "registro.txt"
 
-            # Abre el archivo en modo de escritura
-            with open(archivo, "a") as f:
-                # Escribe la información en el archivo
-                f.write(f"Nombre: {nombre}\n")
-                f.write(f"Tipo de Documento: {tipo_documento}\n")
-                f.write(f"Número de Documento: {numero_documento}\n")
-                f.write(f"Correo: {correo}\n")
-                f.write(f"Celular: {celular}\n")
-                f.write(f"Tipo de Cliente: {tipo_cliente}\n")
-                f.write("\n")
+        # Abre el archivo en modo de escritura
+        with open(archivo, "a", encoding="utf-8") as f:
+            # Escribe la información en el archivo, usando '-' como separador
+            f.write(f"Nombre: {nombre}\n")
+            f.write(f"Tipo de Documento: {tipo_documento}\n")
+            f.write(f"Número de Documento: {numero_documento}\n")
+            f.write(f"Correo: {correo}\n")
+            f.write(f"Contraseña: {password}\n")
+            f.write(f"Celular: {celular}\n")
+            f.write(f"Tipo de Cliente: {tipo_cliente}\n")
+            f.write(f"Instagram: {instagram}\n")
+            f.write(f"Whatsapp: {wpp}\n")
+            f.write(f"Facebook: {facebook}\n")
+            f.write(f"Ruta de la Imagen: {ruta_imagen}\n")
+            f.write("---------------------------------------------------\n")
     def accion_botonVolver(self):
         # Ocultamos la ventana actual
         self.hide()
@@ -199,11 +272,17 @@ class ventana5(QMainWindow):
             tipo_documento = self.comboBox.currentText()
             numero_documento = self.editNumeroDeDocumento.text()
             correo = self.editCorreo.text()
+            password = self.editPassword.text()
             celular = self.editCelular.text()
             tipo_cliente = self.comboBoxTipoCliente.currentText()
+            instagram = self.editInstagram.text()
+            wpp = self.editWpp.text()
+            facebook = self.editFacebook.text()
+            ruta_imagen = self.obtener_ruta_imagen()
 
             # Guardar la información en un archivo plano
-            self.guardar_en_archivo(nombre, tipo_documento, numero_documento, correo, celular, tipo_cliente)
+            self.guardar_en_archivo(nombre, tipo_documento, numero_documento, correo, password, celular, tipo_cliente, instagram, wpp, facebook, ruta_imagen)
+        # Define el nombre del archivo )
 
             # Mostrar mensaje de registro exitoso
             mensaje = f'SE HA ENVIADO CORRECTAMENTE SU REGISTRO.'
@@ -218,10 +297,67 @@ class ventana5(QMainWindow):
 
         except Exception as e:
             print(f"Error: {str(e)}")
+        
+        
+    def obtener_registros(self):
+        archivo = "registro.txt"
+
+        registros = []
+
+        try:
+            with open(archivo, "r", encoding="utf-8") as f:
+                lineas = f.readlines()
+                
+
+                # Inicializamos el diccionario de registro
+                registro = {}
+                for linea in lineas:
+                    # Si encontramos un separador, agregamos el registro actual a la lista de registros
+                    if linea.startswith("---------------------------------------------------"):
+                        if registro:
+                            registros.append(registro)
+                            
+                            # Reiniciamos el diccionario para el próximo registro
+                            registro = {}
+                    else:
+                        # Dividimos la línea en clave y valor y agregamos al diccionario
+                        partes = linea.split(":", 1)
+                        if len(partes) == 2:
+                            clave, valor = map(str.strip, partes)
+                            registro[clave] = valor
+                            
+
+                # Si hay un registro pendiente, agrégalo
+                if registro:
+                    registros.append(registro)
+                    
+
+        except Exception as e:
+            print("Error leyendo archivo:", e)
+
+        
+        return registros
 
     def mostrar_ventanaAnterior(self):
-    # Ocultar la ventana actual
-        self.hide()
-
-    # Crear una instancia de la ventana6 y mostrarla
+        # Cierra la ventana actual y muestra la ventana anterior
+        self.close()
         self.ventanaAnterior.show()
+        
+
+    def abrirDialogoImagen(self):
+        opciones = QFileDialog.Options()
+        archivo, _ = QFileDialog.getOpenFileName(self, "Selecciona una imagen", "",
+                                                "Archivos de Imagen (*.png *.jpg *.bmp *.jpeg);;Todos los archivos ()",
+                                                options=opciones)
+        if archivo:
+            # Puedes guardar la ruta del archivo en la base de datos o en el registro del usuario
+            print(f'Ruta de la imagen seleccionada: {archivo}')
+
+    def obtener_ruta_imagen(self):
+        opciones = QFileDialog.Options()
+        archivo, _ = QFileDialog.getOpenFileName(self, "Selecciona una imagen", "",
+                                                "Archivos de Imagen (*.png *.jpg *.bmp *.jpeg);;Todos los archivos ()",
+                                                options=opciones)
+        return archivo if archivo else ""
+            
+            
