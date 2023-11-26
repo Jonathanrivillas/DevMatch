@@ -67,3 +67,51 @@ Instagram: Jonathan_pirobo_cacorro
 Whatsapp: 3014424125
 Facebook: Jonathan el marica
 ---------------------------------------------------
+Nombre: Santiago Arango Galeano
+Tipo de Documento: Cédula
+Número de Documento: 1020105514
+Correo: santi
+Contraseña: 1
+Celular: 3014424125
+Tipo de Cliente: Carpy
+Instagram: Santi_Arango
+Whatsapp: 3014424125
+Facebook: Santiago Arango Galeano
+Ruta de la Imagen: Logo/FOTO KARINA2.jpg
+---------------------------------------------------
+Nombre: Mimbis
+Tipo de Documento: Cédula
+Número de Documento: 213
+Correo: mimbis
+Contraseña: 1
+Celular: 301
+Tipo de Cliente: Carpy
+Instagram: mimbis
+Whatsapp: 301
+Facebook: mimbis
+Ruta de la Imagen: C://Users//Santi//Downloads//Mimbis.jpg
+---------------------------------------------------
+Nombre: Jona
+Tipo de Documento: Cédula
+Número de Documento: 100037545
+Correo: jona
+Contraseña: 1
+Celular: 301456487875
+Tipo de Cliente: Carpy
+Instagram: A_serius_men
+Whatsapp: 301456487875
+Facebook: A serius men
+Ruta de la Imagen: C:/Users/Santi/Downloads/Un hombre serio.jpg
+---------------------------------------------------
+Nombre: Jero velasquez
+Tipo de Documento: Cédula
+Número de Documento: 12056421564
+Correo: jero@gmail.com
+Contraseña: 1
+Celular: 301
+Tipo de Cliente: Carpy
+Instagram: jero_destroza_qkas
+Whatsapp: 301
+Facebook: jero papasito
+Ruta de la Imagen: C:/Users/Santi/Downloads/Infofrafia PIN.jpg
+---------------------------------------------------

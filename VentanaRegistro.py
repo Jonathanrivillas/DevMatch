@@ -219,12 +219,22 @@ class ventana5(QMainWindow):
         self.botonVolver.setStyleSheet("color : #FFFFFF"
                                        "background-color : black;"
                                        "border-radius :20px;")
+        self.botonSeleccionarImagen = QPushButton(self)
+        self.botonSeleccionarImagen.setText("Seleccionar foto de perfil")
+        self.botonSeleccionarImagen.setFont(self.letra2)
+        self.botonSeleccionarImagen.setFixedWidth(200)
+        self.botonSeleccionarImagen.move(70, 510)
+        self.botonSeleccionarImagen.setStyleSheet("color : #FFFFFF"
+                                            "background-color : black;"
+                                            "border-radius :20px;")
+
+        self.botonSeleccionarImagen.clicked.connect(self.abrirDialogoImagen)
 
         self.botonVolver.clicked.connect(self.accion_botonVolver)
 
         self.botonEnviar.clicked.connect(self.accion_botonEnviar)
 
-    def guardar_en_archivo(self, nombre, tipo_documento, numero_documento, correo, password, celular, tipo_cliente, instagram, wpp, facebook):
+    def guardar_en_archivo(self, nombre, tipo_documento, numero_documento, correo, password, celular, tipo_cliente, instagram, wpp, facebook, ruta_imagen):
         # Define el nombre del archivo
         archivo = "registro.txt"
 
@@ -241,6 +251,7 @@ class ventana5(QMainWindow):
             f.write(f"Instagram: {instagram}\n")
             f.write(f"Whatsapp: {wpp}\n")
             f.write(f"Facebook: {facebook}\n")
+            f.write(f"Ruta de la Imagen: {ruta_imagen}\n")
             f.write("---------------------------------------------------\n")
     def accion_botonVolver(self):
         # Ocultamos la ventana actual
@@ -261,9 +272,10 @@ class ventana5(QMainWindow):
             instagram = self.editInstagram.text()
             wpp = self.editWpp.text()
             facebook = self.editFacebook.text()
+            ruta_imagen = self.obtener_ruta_imagen()
 
             # Guardar la información en un archivo plano
-            self.guardar_en_archivo(nombre, tipo_documento, numero_documento, correo, password, celular, tipo_cliente, instagram, wpp, facebook)
+            self.guardar_en_archivo(nombre, tipo_documento, numero_documento, correo, password, celular, tipo_cliente, instagram, wpp, facebook, ruta_imagen)
         # Define el nombre del archivo )
 
             # Mostrar mensaje de registro exitoso
@@ -327,3 +339,22 @@ class ventana5(QMainWindow):
         # Cierra la ventana actual y muestra la ventana anterior
         self.close()
         self.ventanaAnterior.show()
+        
+
+    def abrirDialogoImagen(self):
+        opciones = QFileDialog.Options()
+        archivo, _ = QFileDialog.getOpenFileName(self, "Selecciona una imagen", "",
+                                                "Archivos de Imagen (*.png *.jpg *.bmp *.jpeg);;Todos los archivos ()",
+                                                options=opciones)
+        if archivo:
+            # Puedes guardar la ruta del archivo en la base de datos o en el registro del usuario
+            print(f'Ruta de la imagen seleccionada: {archivo}')
+
+    def obtener_ruta_imagen(self):
+        opciones = QFileDialog.Options()
+        archivo, _ = QFileDialog.getOpenFileName(self, "Selecciona una imagen", "",
+                                                "Archivos de Imagen (*.png *.jpg *.bmp *.jpeg);;Todos los archivos ()",
+                                                options=opciones)
+        return archivo if archivo else ""
+            
+            
