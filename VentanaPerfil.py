@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtGui import QFont, QPixmap
 from PyQt5.QtWidgets import QMainWindow, QDesktopWidget, QLabel, QLineEdit, QApplication, QPushButton, QWidget, QToolBar, QAction, QFileDialog
-from PyQt5.QtCore import QSize
+from PyQt5.QtCore import QSize, Qt
 from PyQt5.QtGui import QIcon
 from ventanaEditarPerfil import ventana9
 
@@ -77,15 +77,16 @@ class ventana4(QMainWindow):
         self.botonSubirImagen = QPushButton("Publicar", self)
         self.botonSubirImagen.setFont(self.letra2)
         self.botonSubirImagen.move(40, 490)
+        self.botonSubirImagen.setStyleSheet("color : black;"
+                                       "background-color : white;"
+                                       "border-radius :20px;")
         self.botonSubirImagen.clicked.connect(self.abrirDialogoImagen)
 
         
         
 
         
-    # Definimos la accion de publicar (Subir archivo)
-        print(f'Diccionario de usuario: {usuario}')  # Imprime el diccionario para depurar
-
+  
         self.letreroNombre = QLabel(self)
         self.letreroNombre.setText(usuario['Nombre'])  # O proporciona un valor predeterminado
         self.letreroNombre.setFont(self.letra1)
@@ -170,17 +171,21 @@ class ventana4(QMainWindow):
         self.letreroCalificacion.setFixedWidth(500)
 
         self.mostrar_imagen_perfil()
+        
+        self.botonSubirImagen.setCursor(Qt.PointingHandCursor)
 
     def accion_barraHerramientas(self, opcion):
         # Ocultamos la ventana actual
         self.hide()
-        # Validamos la opcion que se pulso
+
+        # Validamos la opcion que se pulsó
         if opcion.text() == "Cerrar sesión":
             self.ventanaAnterior.show()
-        if opcion.text() == "Editar perfil":
-
+        elif opcion.text() == "Editar perfil":
             self.ventanaEditar = ventana9(self)
             self.ventanaEditar.show()
+
+            # Establecer el cursor para la ventana de edición de perfil
             
             
     def accion_botonComentarios(self):
@@ -191,7 +196,7 @@ class ventana4(QMainWindow):
 
     def mostrar_imagen_perfil(self):
         if self.ruta_imagen:
-            print(f'Ruta de la imagen: {self.ruta_imagen}')  # Mensaje de depuración
+            
             try:
                 pixmap = QPixmap()
                 pixmap.load(self.ruta_imagen)
@@ -202,8 +207,7 @@ class ventana4(QMainWindow):
             except Exception as e:
                 print(f'Error al cargar la imagen: {e}')
         else:
-            print('La ruta de la imagen está vacía.')  # Mensaje de depuración
-            # Si no hay una imagen seleccionada, podrías mostrar una imagen predeterminada o dejar el QLabel vacío
+
             self.imagenPerfil.clear()
             
     def abrirDialogoImagen(self):
@@ -227,7 +231,7 @@ class ventana4(QMainWindow):
         try:
             with open(nombre_archivo, 'a') as archivo:
                 archivo.write(f'Ruta de la Imagen: {ruta_imagen}\n')
-                print(f'Ruta de la imagen guardada en {nombre_archivo}')
+
         except Exception as e:
             print(f"Error al guardar la ruta de la imagen: {e}")
             

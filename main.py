@@ -3,6 +3,7 @@ import sys
 from Opciones import opciones
 from PyQt5.QtGui import QFont, QPixmap, QIcon
 from PyQt5.QtWidgets import QMainWindow, QDesktopWidget, QLabel, QApplication, QPushButton
+from PyQt5.QtCore import Qt
 
 
 class Ventana1(QMainWindow):
@@ -34,7 +35,7 @@ class Ventana1(QMainWindow):
         self.logoFondo.setPixmap(self.logo)
         self.logoFondo.setFixedWidth(250)
         self.logoFondo.setFixedHeight(250)
-        self.logoFondo.setStyleSheet("background-color: none")
+        self.logoFondo.setStyleSheet("background-color: none;")
         self.logoFondo.move(165, 20)
 
         # Establecemos ancho y alto
@@ -78,9 +79,10 @@ class Ventana1(QMainWindow):
         self.boton1.setFont(self.letra1)
         self.boton1.setFixedWidth(250)
         self.boton1.move(170,350)
-        self.boton1.setStyleSheet("color : #FFFFFF"
-                                  "background-color : black;"
+        self.boton1.setStyleSheet("color : black;"
+                                  "background-color : white;"
                                   "border-radius :20px;")
+        self.boton1.setCursor(Qt.PointingHandCursor)
 
         self.boton1.clicked.connect(self.accion_boton1)
 

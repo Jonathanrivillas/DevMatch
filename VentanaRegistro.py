@@ -2,7 +2,7 @@ import sys
 
 from PyQt5.QtGui import QFont, QPixmap, QIcon
 from PyQt5.QtWidgets import QMainWindow, QDesktopWidget, QLabel, QLineEdit, QApplication, QPushButton, QWidget, QComboBox, QVBoxLayout, QFileDialog, QMessageBox
-
+from PyQt5.QtCore import Qt
 
 class ventana5(QMainWindow):
     def __init__(self, anterior):
@@ -112,7 +112,7 @@ class ventana5(QMainWindow):
         self.letreroCorreo = QLabel(self)
         self.letreroCorreo.setText("Correo")
         self.letreroCorreo.setFont(self.letra2)
-        self.letreroCorreo.setStyleSheet("color: #white; background-color: none")
+        self.letreroCorreo.setStyleSheet("color: white; background-color: none")
         self.letreroCorreo.move(70, 370)
         self.letreroCorreo.setFixedWidth(200)
 
@@ -206,8 +206,8 @@ class ventana5(QMainWindow):
         self.botonEnviar.setFont(self.letra2)
         self.botonEnviar.setFixedWidth(100)
         self.botonEnviar.move(510,510)
-        self.botonEnviar.setStyleSheet("color : #FFFFFF"
-                                  "background-color : black;"
+        self.botonEnviar.setStyleSheet("color : black;"
+                                  "background-color : white;"
                                   "border-radius :20px;")
 
         self.botonVolver = QPushButton(self)
@@ -216,16 +216,16 @@ class ventana5(QMainWindow):
         self.botonVolver.setFixedWidth(40)
         self.botonVolver.setFixedHeight(40)
         self.botonVolver.move(10, 10)
-        self.botonVolver.setStyleSheet("color : #FFFFFF"
-                                       "background-color : black;"
+        self.botonVolver.setStyleSheet("color : black;"
+                                       "background-color : white;"
                                        "border-radius :20px;")
         self.botonSeleccionarImagen = QPushButton(self)
         self.botonSeleccionarImagen.setText("Seleccionar foto de perfil")
         self.botonSeleccionarImagen.setFont(self.letra2)
         self.botonSeleccionarImagen.setFixedWidth(200)
         self.botonSeleccionarImagen.move(70, 510)
-        self.botonSeleccionarImagen.setStyleSheet("color : #FFFFFF"
-                                            "background-color : black;"
+        self.botonSeleccionarImagen.setStyleSheet("color : black;"
+                                            "background-color : white;"
                                             "border-radius :20px;")
 
         self.botonSeleccionarImagen.clicked.connect(self.abrirDialogoImagen)
@@ -233,6 +233,12 @@ class ventana5(QMainWindow):
         self.botonVolver.clicked.connect(self.accion_botonVolver)
 
         self.botonEnviar.clicked.connect(self.accion_botonEnviar)
+        
+        self.botonEnviar.setCursor(Qt.PointingHandCursor)
+        
+        self.botonSeleccionarImagen.setCursor(Qt.PointingHandCursor)
+        
+        self.botonVolver.setCursor(Qt.PointingHandCursor)
 
     def guardar_en_archivo(self, nombre, tipo_documento, numero_documento, correo, password, celular, tipo_cliente, instagram, wpp, facebook, ruta_imagen):
         # Define el nombre del archivo
@@ -295,14 +301,13 @@ class ventana5(QMainWindow):
         
     def obtener_registros(self):
         archivo = "registro.txt"
-        print(f"Leyendo registros desde {archivo}")
 
         registros = []
 
         try:
             with open(archivo, "r", encoding="utf-8") as f:
                 lineas = f.readlines()
-                print(f"Lineas leídas: {len(lineas)}")
+                
 
                 # Inicializamos el diccionario de registro
                 registro = {}
@@ -311,7 +316,7 @@ class ventana5(QMainWindow):
                     if linea.startswith("---------------------------------------------------"):
                         if registro:
                             registros.append(registro)
-                            print(f"Registro agregado: {registro}")
+                            
                             # Reiniciamos el diccionario para el próximo registro
                             registro = {}
                     else:
@@ -320,19 +325,17 @@ class ventana5(QMainWindow):
                         if len(partes) == 2:
                             clave, valor = map(str.strip, partes)
                             registro[clave] = valor
-                            print(f"{clave}: {valor}")
-                        else:
-                            print(f"Advertencia: Línea ignorada - {linea.strip()}")
+                            
 
                 # Si hay un registro pendiente, agrégalo
                 if registro:
                     registros.append(registro)
-                    print(f"Registro agregado: {registro}")
+                    
 
         except Exception as e:
             print("Error leyendo archivo:", e)
 
-        print(f"Registros: {registros}")
+        
         return registros
 
     def mostrar_ventanaAnterior(self):

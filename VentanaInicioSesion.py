@@ -1,6 +1,7 @@
 import sys
 import json
 from PyQt5.QtGui import QFont, QPixmap, QIcon
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QMainWindow, QDesktopWidget, QLabel, QLineEdit, QApplication, QPushButton, QWidget, QMessageBox
 from VentanaPerfil import ventana4
 from VentanaRegistro import ventana5
@@ -86,7 +87,7 @@ class ventana3(QMainWindow):
         self.editPassword = QLineEdit(self)
         self.editPassword.setFixedWidth(250)
         self.editPassword.move(230,380)
-        self.editPassword.setStyleSheet("background-color: white")
+        self.editPassword.setStyleSheet("background-color: white;")
         self.editPassword.setEchoMode(QLineEdit.Password)
 
         self.botonIniciarSesion = QPushButton(self)
@@ -94,8 +95,8 @@ class ventana3(QMainWindow):
         self.botonIniciarSesion.setFont(self.letra2)
         self.botonIniciarSesion.setFixedWidth(120)
         self.botonIniciarSesion.move(300,450)
-        self.botonIniciarSesion.setStyleSheet("color : #FFFFFF"
-                                  "background-color : black;"
+        self.botonIniciarSesion.setStyleSheet("color : black;"
+                                  "background-color : white;"
                                   "border-radius :20px;")
 
         self.logoFondo = QLabel(self)
@@ -114,14 +115,16 @@ class ventana3(QMainWindow):
         self.botonVolver.setFixedWidth(40)
         self.botonVolver.setFixedHeight(40)
         self.botonVolver.move(10, 10)
-        self.botonVolver.setStyleSheet("color : #FFFFFF"
-                                       "background-color : black;"
+        self.botonVolver.setStyleSheet("color : black;"
+                                       "background-color : white;"
                                        "border-radius :20px;")
 
 
         self.botonIniciarSesion.clicked.connect(self.accion_botonIniciarSesion)
         self.botonVolver.clicked.connect(self.accion_botonVolver)
 
+        self.botonIniciarSesion.setCursor(Qt.PointingHandCursor)
+        self.botonVolver.setCursor(Qt.PointingHandCursor)
  
 
 
@@ -141,12 +144,8 @@ class ventana3(QMainWindow):
             ventana_emergente.exec_()
             return
 
-        print(f'Correo: {email}, Contraseña: {password}')  # Agregamos esta línea de depuración
-
         # Obtener la información de registro desde la ventana de registro
         registros = self.ventanaRegistro.obtener_registros()
-
-        print(f'Registros: {registros}')  # Agregamos esta línea de depuración
 
         # Verificar si el usuario está registrado
         for registro in registros:

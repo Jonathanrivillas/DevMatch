@@ -1,5 +1,6 @@
 from PyQt5.QtGui import QFont, QPixmap, QIcon
 from PyQt5.QtWidgets import QMainWindow, QDesktopWidget, QWidget, QGridLayout, QLabel, QPushButton
+from PyQt5.QtCore import Qt
 from VentanaInicioSesion import ventana3
 from VentanaInicioCliente import ventana6
 from VentanaRegistro import ventana5
@@ -62,11 +63,12 @@ class opciones(QMainWindow):
         self.botonVolver = QPushButton(self)
         self.botonVolver.setText("←")
         self.botonVolver.setFont(self.letra2)
-        self.botonVolver.setFixedWidth(60)
+        self.botonVolver.setFixedWidth(40)
+        self.botonVolver.setFixedHeight(40)
         self.botonVolver.move(10, 10)
-        self.botonVolver.setStyleSheet("color : #FFFFFF"
-                                  "background-color : black;"
-                                  "border-radius :20px;")
+        self.botonVolver.setStyleSheet("color : black;"
+                                       "background-color : white;"
+                                       "border-radius :20px;")
 
 
         self.botonIngresarCliente = QPushButton(self)
@@ -74,8 +76,8 @@ class opciones(QMainWindow):
         self.botonIngresarCliente.setFont(self.letra2)
         self.botonIngresarCliente.setFixedWidth(170)
         self.botonIngresarCliente.move(300, 270)
-        self.botonIngresarCliente.setStyleSheet("color : #FFFFFF"
-                                  "background-color : black;"
+        self.botonIngresarCliente.setStyleSheet("color : black;"
+                                  "background-color : white;"
                                   "border-radius :20px;")
 
         self.botonIngresarCarpy = QPushButton(self)
@@ -83,8 +85,8 @@ class opciones(QMainWindow):
         self.botonIngresarCarpy.setFont(self.letra2)
         self.botonIngresarCarpy.setFixedWidth(170)
         self.botonIngresarCarpy.move(100, 270)
-        self.botonIngresarCarpy.setStyleSheet("color : #FFFFFF"
-                                  "background-color : black;"
+        self.botonIngresarCarpy.setStyleSheet("color : black;"
+                                  "background-color : white;"
                                   "border-radius :20px;")
         
         self.botonRegistrarse = QPushButton(self)
@@ -92,8 +94,8 @@ class opciones(QMainWindow):
         self.botonRegistrarse.setFont(self.letra2)
         self.botonRegistrarse.setFixedWidth(120)
         self.botonRegistrarse.move(230, 320)
-        self.botonRegistrarse.setStyleSheet("color : #FFFFFF"
-                                       "background-color : black;"
+        self.botonRegistrarse.setStyleSheet("color : black;"
+                                       "background-color : white;"
                                        "border-radius :20px;")
 
         self.logoFondo = QLabel(self)
@@ -102,7 +104,7 @@ class opciones(QMainWindow):
         self.logoFondo.setPixmap(self.logo)
         self.logoFondo.setFixedWidth(130)
         self.logoFondo.setFixedHeight(110)
-        self.logoFondo.setStyleSheet("background-color: none")
+        self.logoFondo.setStyleSheet("background-color: none;")
         self.logoFondo.move(334, 130)
 
         self.logoCarpintero = QLabel(self)
@@ -111,7 +113,7 @@ class opciones(QMainWindow):
         self.logoCarpintero.setPixmap(self.logo)
         self.logoCarpintero.setFixedWidth(200)
         self.logoCarpintero.setFixedHeight(200)
-        self.logoCarpintero.setStyleSheet("background-color: none")
+        self.logoCarpintero.setStyleSheet("background-color: none;")
         self.logoCarpintero.move(50, 80)
         
         # Conectamos los botones
@@ -119,6 +121,11 @@ class opciones(QMainWindow):
         self.botonVolver.clicked.connect(self.accion_botonVolver)
         self.botonIngresarCliente.clicked.connect(self.accion_botonIngresarCliente)
         self.botonRegistrarse.clicked.connect(self.accion_botonRegistrarse)
+        
+        self.botonIngresarCarpy.setCursor(Qt.PointingHandCursor)
+        self.botonVolver.setCursor(Qt.PointingHandCursor)
+        self.botonIngresarCliente.setCursor(Qt.PointingHandCursor)
+        self.botonRegistrarse.setCursor(Qt.PointingHandCursor)
 
     def accion_botonVolver(self):
         # Ocultamos la ventana actual
